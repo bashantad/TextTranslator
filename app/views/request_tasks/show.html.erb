@@ -1,0 +1,24 @@
+<h1>My translation Work</h1>
+<hr />
+<table width="100%" class="work_table">
+  <tr>
+    <td>From</td>
+    <td> 
+    <%= Language.find(@request_task.from).language %></td>
+  </tr>
+  <tr>
+    <td>To</td>
+    <td> <%= Language.find(@request_task.to).language %></td>
+  </tr>
+  <tr>
+    <td>Translation text</td>
+    <td> <%= @request_task.translation_text %></td>
+  </tr>
+  <tr>
+    <td>Budget</td>
+    <td> <%= @request_task.budget %></td>
+  </tr>
+</table>
+
+<br />
+<%= link_to 'Back to main', request_tasks_path %>

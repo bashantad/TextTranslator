@@ -1,0 +1,38 @@
+<fieldset>
+  <legend><h2>Post text for translation</h2></legend>
+  <%= form_for(@request_task) do |f| %>
+  <% if @request_task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@request_task.errors.count, "error") %> prohibited this destination from being saved:</h2>
+
+    <ul>
+      <% @request_task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<div id = "form_field">
+  <div class="field">
+     <%= f.label :from %><br />
+     <%= select("request_task", "from", Language.all.collect {|lang| [ lang.language, lang.id ] }, {:include_blank => 'Select Language'}) %>  
+     </div>
+  <div class="field">
+    <%= f.label :translation_text %><br />
+    <%= f.text_area :translation_text,:placeholder => "Minimum 50 characters" %>
+  </div>
+  <div class="field">
+    <%= f.label :to %><br />
+    <%= select("request_task", "to", Language.all.collect {|lang| [ lang.language, lang.id ] }, {:include_blank => 'Select Language'}) %>  
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget, :placeholder => "Minimum budget should be 10" %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</div>
+  <% end %>
+</fieldset>
+

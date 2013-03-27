@@ -1,0 +1,26 @@
+
+
+    <% content_for :aside do %>
+      <aside id="sidebar" class="column">
+      	<form class="quick_search">
+      		<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+      	</form>
+      	<hr/>
+      	<h3>Content</h3>
+      	  <ul class="toggle">
+      			<li class="icn_new_article"><a href="#">New Article</a></li>
+      			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+      			<li class="icn_categories"><a href="#">Categories</a></li>
+      			<li class="icn_tags"><a href="#">Tags</a></li>
+      		</ul>
+      	  </aside>
+    <% end %>
+
+
+
+<div id = "requester_login">
+  <%= link_to 'Requester Login',new_requester_session_path %>
+</div>
+<div id = "user_login">
+  <%= link_to 'Worker Login',new_user_session_path %>
+</div>

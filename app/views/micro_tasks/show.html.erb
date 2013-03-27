@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Task:</b>
+  <%= @micro_task.task_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @micro_task.status %>
+</p>
+
+<p>
+  <b>Credit:</b>
+  <%= @micro_task.credit %>
+</p>
+
+<p>
+  <b>Translation microtask:</b>
+  <%= @micro_task.translation_microtask %>
+</p>
+
+<p>
+  <b>Translated microtask:</b>
+  <%= @micro_task.translated_microtask %>
+</p>
+
+<p>
+  <b>Worker:</b>
+  <%= @micro_task.worker_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_task_micro_task_path(@micro_task) %> |
+<%= link_to 'Back', request_task_micro_tasks_path %>

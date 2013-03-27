@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Welcome to TextTranslator.com</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag :jquery %>
+  <%= javascript_include_tag :tablesorter %>
+  <%= javascript_include_tag :application %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id="header">
+    <hgroup>
+      <h1 class="site_title"><a href="#">TextTranslator.com</a></h1>
+    </hgroup>
+  </header> <!-- end of header bar -->
+  <section id="secondary_bar">
+    <div class="user">
+      <!-- <p>John Doe (<a href="#">3 Messages</a>)</p> -->
+
+    <p></p>
+
+    </div>
+    <div class="breadcrumbs_container">
+      <% if user_signed_in? %> 
+      <article class="breadcrumbs">
+        Welcome <%= current_user.email %>   
+        <div class="breadcrumb_divider"></div></article>
+        <article class="breadcrumbs">
+          <%= link_to 'Logout', destroy_user_session_path, :method=> 'get' %> 
+
+          <div class="breadcrumb_divider"></div></article>
+          <% end %>
+        </div>
+      </section><!-- end of secondary bar -->
+      <aside id="sidebar" class="column">
+        <% if user_signed_in? %>
+        <h3>Worker</h3>
+        <ul class="toggle">
+          <li class="icn_new_article"><%= link_to 'Show all tasks', user_root_path %></li>
+          <li class="icn_new_article"><%= link_to 'My completed tasks', show_micro_tasks_path('done') %></li>
+          <li class="icn_edit_article"><%= link_to 'My approved tasks', show_micro_tasks_path('approved') %></li>
+          <li class="icn_tags"><a href="#">Credits:<% if user_signed_in? %><%=current_user.credit.round(3) %><%end %></a></li>
+
+        </ul>
+        <% end %>
+      </aside>
+      <section id="main" class="column">
+        <article class="module width_full">
+          <header><h3>TextTranslator.com</h3></header>
+          <div class="module_content">
+            <article class="stats_graph">
+              <p class="notice"><%= notice %></p>
+               <p class="alert"><%= alert %></p>
+              <%=yield %>
+            </article>	
+            <div class="clear"></div>
+          </div>
+        </article><!-- end of stats article -->
+
+
+        <div class="clear"></div>
+
+        <article class="module width_full">
+          <footer>
+            <div class="submit_link">
+              Designed by <a href = "#">Cloudfactory Engineers</a>
+            </footer>
+          </article><!-- end of post new article -->
+          <div class="spacer"></div>
+        </section>
+
+
+      </body>
+
+      </html>

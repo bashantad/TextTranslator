@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from: MyString
+  to: MyString
+  budget: 1.5
+  translation_text: MyText
+  translated_text: MyText
+  requester_id: 1
+
+two:
+  from: MyString
+  to: MyString
+  budget: 1.5
+  translation_text: MyText
+  translated_text: MyText
+  requester_id: 1

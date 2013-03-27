@@ -1,0 +1,23 @@
+
+<h1>Listing Micro Tasks</h1>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Translation text</th>
+    <th>Translated text</th>
+    <th>credit</th>
+  </tr>
+<% i = 0 %>
+<% @current_tasks.each do |micro_task| %>
+  <tr>
+    <td><%= i=i+1 %></td>
+    <td><%= micro_task.translation_microtask %></td>
+    <td><%=micro_task.translated_microtask %></td>
+    <td><%=micro_task.credit.round(3) %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @current_tasks %>
+
+

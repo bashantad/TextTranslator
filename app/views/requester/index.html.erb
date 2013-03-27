@@ -1,0 +1,20 @@
+ <% content_for :aside do %>
+    <aside id="sidebar" class="column">
+    	<form class="quick_search">
+    		<input type="text" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+    	</form>
+    	<hr/>
+    	<h3>Requester</h3>
+    	  <ul class="toggle">
+    	    
+    			<li class="icn_new_article"><%= link_to 'Submit a new work', new_request_task_path %></li>
+    			<li class="icn_edit_article"><a href="#">View Work Progress</a></li>
+    			<li class="icn_categories"><a href="#">Work Completed</a></li>
+    			<li class="icn_tags"><a href="#">Credits</a></li>
+    		</ul>
+    	  </aside>
+  <% end %>
+<div id = "task_instruction">
+<h3>Your credit: 1000</h3>
+<h3><%= link_to 'Submit a new work', new_request_task_path %></h3>
+</div>

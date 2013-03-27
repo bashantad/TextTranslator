@@ -1,0 +1,32 @@
+<h1>Tasks that need to be translated</h1>
+
+<table class = "task_table">   
+  <tr>
+    <th>Task</th>
+    <th>Translation Microtask</th>
+    <th>Credit</th>
+    <th><%= form_tag(search_path, :method => 'get') %> 
+   <%= select("micro_task", "from", Language.all.collect {|lang| [ lang.language, lang.id ] }, {:include_blank => 'From'}) %> </th>
+    <th><%= select("micro_task", "to", Language.all.collect {|lang| [ lang.language, lang.id ] }, {:include_blank => 'To'}) %></th>
+    <th> <%= submit_tag("Search") %> </th>
+  </tr>
+<% i = 0 %>
+<% @filtered_tasks.each do |micro_task| %>
+  <tr>
+    <td><%= i=i+1 %></td>
+    <td><%= micro_task.translation_microtask %></td>
+    <td><%= micro_task.credit.round(3) %></td>
+    <td>
+      <% lang_id=RequestTask.find(micro_task.request_task_id).from %>
+      <%= Language.find(lang_id).language %>
+    </td>
+    <td><% lang_id=RequestTask.find(micro_task.request_task_id).to %>
+     <%= Language.find(lang_id).language %></td>
+    <td><%= link_to 'Translate text', translate_microtask_path(micro_task,'locked') %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%=link_to 'back', user_root_path %>
+<%= will_paginate @filtered_tasks %>

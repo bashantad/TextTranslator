@@ -1,0 +1,40 @@
+<h1>Translate Micro task</h1>
+<table>
+  <tr>
+    <td>
+      <fieldset>
+        <legend><h3>Text to be translated</h3></legend>
+        <%= @micro_task.translation_microtask %>
+      </fieldset>
+      <b>Credit:</b>
+      <%= @micro_task.credit %>
+    </p>
+
+  </td>
+  <td>
+
+    <%= form_for(@micro_task, :url => do_translate_microtask_path(@micro_task,'done')) do |f|%>
+    <% if @micro_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@micro_task.errors.count, "error") %> prohibited this micro_task from being saved:</h2>
+      <ul>
+        <% @micro_task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :translated_microtask %><br />
+      <%= f.text_area :translated_microtask %>
+    </div>
+    <div class="actions">
+      <%= f.submit("Save translation") %>
+    </div>
+    <% end %>
+  </td>
+</tr>
+
+</table>
+<%= link_to 'Back', user_root_path %>
+

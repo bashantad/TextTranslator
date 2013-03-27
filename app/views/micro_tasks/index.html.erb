@@ -1,0 +1,37 @@
+<h1>Listing Micro Tasks</h1>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Translation microtask</th>
+    <th>Translated microtask</th>
+    <th></th>
+  </tr>
+<% i = 0 %>
+<% @micro_tasks.each do |micro_task| %>
+  <tr>
+    <td><%= i=i+1 %></td>
+    <td><%= micro_task.translation_microtask %></td>
+    <td><% if micro_task.translated_microtask == nil %>
+       processing
+       <%else%>
+       <%=micro_task.translated_microtask %>
+    <% end %></td>
+    
+    <% if micro_task.status == 'approved' %>
+    <td> Approved </td>
+    <td></td>
+    <% elsif micro_task.status == 'done' %>
+    <td class = "task_status_<%=micro_task.id%>"><%= link_to 'Approve', change_microtask_status_path(micro_task,'approved')%></td>
+    <td class = "task_status1_<%=micro_task.id%>"><%= link_to 'Decline', change_microtask_status_path(micro_task,'pending')%></td>
+    <% else %>
+    <td></td>
+    <td></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @micro_tasks %>
+<h2><%= link_to 'Back to main', request_tasks_path %></h2>
+
+

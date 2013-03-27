@@ -1,0 +1,32 @@
+<div id = "task_instruction">
+<h3>Post your translation task to thousand workers<h3>
+<h3>My total credits: <%= current_requester.credit.round(3) %></h3>
+<h3><%= link_to 'Submit a new work', new_request_task_path %></h3>
+</div>
+
+<h1>Listing all translation works</h1>
+<table class = "translation_tasks">
+  <tr>
+    <th>Translation Text</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Budget</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_tasks.each do |task| %>
+  <tr>
+    <td><%= task.translation_text %></td>
+    <td><%= Language.find(task.from).language %></td>
+    <td><%= Language.find(task.to).language %></td>
+    <td><%= task.budget.round(3) %></td>
+    <td><%= link_to 'See task', task %></td>
+    <td><%= link_to 'Translation Progress', request_task_micro_tasks_path(task) %></td>
+    <td><%= link_to 'Delete',  request_task_path(task), confirm: 'Are you sure?', :method => 'delete' %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @request_tasks %>
+
